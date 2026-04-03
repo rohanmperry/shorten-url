@@ -8,6 +8,10 @@ init:
 plan:
 	terraform -chdir=$(TERRAFORM_DIR) plan
 
+package:
+	zip -j bin/create_short_url.zip src/create_short_url/handler.py
+	zip -j bin/redirect.zip src/redirect/handler.py
+
 up:
 	terraform -chdir=$(TERRAFORM_DIR) init
 	terraform -chdir=$(TERRAFORM_DIR) apply -auto-approve
