@@ -46,6 +46,7 @@ module "lambda" {
   log_retention_days        = var.log_retention_days
   create_short_url_zip_path = var.create_short_url_zip_path
   redirect_zip_path         = var.redirect_zip_path
+  base_url                  = var.base_url
 }
 
 module "api_gateway" {

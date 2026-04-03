@@ -165,13 +165,14 @@ resource "aws_cloudwatch_log_group" "redirect" {
 # Lambda Functions
 # -------------------------------------------------------
 resource "aws_lambda_function" "create_short_url" {
-  function_name = "${local.name_prefix}-create-short-url"
-  role          = aws_iam_role.lambda.arn
-  handler       = "handler.lambda_handler"
-  runtime       = "python3.11"
-  filename      = var.create_short_url_zip_path
-  timeout       = 10
-  memory_size   = 128
+  function_name    = "${local.name_prefix}-create-short-url"
+  role             = aws_iam_role.lambda.arn
+  handler          = "handler.lambda_handler"
+  runtime          = "python3.11"
+  filename         = var.create_short_url_zip_path
+  source_code_hash = filebase64sha256(var.create_short_url_zip_path)
+  timeout          = 10
+  memory_size      = 128
 
   vpc_config {
     subnet_ids         = var.private_subnet_ids
@@ -181,7 +182,7 @@ resource "aws_lambda_function" "create_short_url" {
   environment {
     variables = {
       DYNAMODB_TABLE = aws_dynamodb_table.urls.name
-      SSM_BASE_URL   = aws_ssm_parameter.base_url.name
+      BASE_URL       = var.base_url
       ENVIRONMENT    = var.environment
     }
   }
@@ -197,13 +198,14 @@ resource "aws_lambda_function" "create_short_url" {
 }
 
 resource "aws_lambda_function" "redirect" {
-  function_name = "${local.name_prefix}-redirect"
-  role          = aws_iam_role.lambda.arn
-  handler       = "handler.lambda_handler"
-  runtime       = "python3.11"
-  filename      = var.redirect_zip_path
-  timeout       = 10
-  memory_size   = 128
+  function_name    = "${local.name_prefix}-redirect"
+  role             = aws_iam_role.lambda.arn
+  handler          = "handler.lambda_handler"
+  runtime          = "python3.11"
+  filename         = var.redirect_zip_path
+  source_code_hash = filebase64sha256(var.redirect_zip_path)
+  timeout          = 10
+  memory_size      = 128
 
   vpc_config {
     subnet_ids         = var.private_subnet_ids
