@@ -9,8 +9,8 @@ plan:
 	terraform -chdir=$(TERRAFORM_DIR) plan
 
 package:
-	zip -j bin/create_short_url.zip src/create_short_url/handler.py
-	zip -j bin/redirect.zip src/redirect/handler.py
+	zip -j bin/create_short_url.zip src/create_short_url/handler.py src/shared/utils.py
+	zip -j bin/redirect.zip src/redirect/handler.py src/shared/utils.py
 
 up:
 	terraform -chdir=$(TERRAFORM_DIR) init
