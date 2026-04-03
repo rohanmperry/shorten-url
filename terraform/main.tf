@@ -47,3 +47,15 @@ module "lambda" {
   create_short_url_zip_path = var.create_short_url_zip_path
   redirect_zip_path         = var.redirect_zip_path
 }
+
+module "api_gateway" {
+  source = "./modules/api_gateway"
+
+  project_name                   = var.project_name
+  environment                    = var.environment
+  log_retention_days             = var.log_retention_days
+  create_short_url_function_arn  = module.lambda.create_short_url_function_arn
+  create_short_url_function_name = module.lambda.create_short_url_function_name
+  redirect_function_arn          = module.lambda.redirect_function_arn
+  redirect_function_name         = module.lambda.redirect_function_name
+}

@@ -27,3 +27,8 @@ output "dynamodb_table_name" {
   description = "DynamoDB table name"
   value       = module.lambda.dynamodb_table_name
 }
+
+output "api_endpoint" {
+  description = "API Gateway endpoint URL"
+  value       = module.api_gateway.api_endpoint
+}
