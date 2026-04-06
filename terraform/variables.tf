@@ -56,8 +56,3 @@ variable "redirect_zip_path" {
   type        = string
   default     = "../bin/redirect.zip"
 }
-
-variable "base_url" {
-  description = "Base URL for shortened links"
-  type        = string
-}
