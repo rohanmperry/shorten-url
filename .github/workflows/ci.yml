@@ -11,6 +11,7 @@ permissions:
 
 env:
   TF_VERSION: "1.7.5"
+  TF_IN_AUTOMATION: true
 
 jobs:
   lint:
