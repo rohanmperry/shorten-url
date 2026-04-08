@@ -14,8 +14,8 @@ env:
   TF_IN_AUTOMATION: true
 
 jobs:
-  lint:
-    name: Lint
+  validate:
+    name: Validate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -29,4 +29,4 @@ jobs:
         run: terraform -chdir=terraform init -backend=false
 
       - name: Terraform Validate
-        run: make lint
+        run: make validate
