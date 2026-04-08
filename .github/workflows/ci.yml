@@ -13,8 +13,8 @@ env:
   TF_IN_AUTOMATION: true
 
 jobs:
-  validate:
-    name: Validate
+  init-validate:
+    name: Init-Validate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -24,8 +24,7 @@ jobs:
         with:
           terraform_version: ${{ env.TF_VERSION }}
 
-      - name: Terraform Init
-        run: terraform -chdir=terraform init -backend=false
-
-      - name: Terraform Validate
-        run: make validate
+      - name: Terraform init and validate
+        run: |
+            terraform -chdir=terraform init -backend=false
+            make validate
