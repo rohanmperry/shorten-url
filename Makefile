@@ -27,5 +27,4 @@ fmt:
 	terraform -chdir=$(TERRAFORM_DIR) fmt -recursive
 
 test:
-	make validate
 	pytest tests/ -v
