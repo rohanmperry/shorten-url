@@ -1,7 +1,3 @@
-# Teraform 1.10.0 or later required to support S3 backend
-# locking, instead of DynamoDB.
-#
-
 TERRAFORM_DIR := terraform
 
 .PHONY: init up down plan fmt lint test
