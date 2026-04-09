@@ -4,11 +4,15 @@ TERRAFORM_DIR := terraform
 
 AUTO_APPROVE := $(if $(TF_IN_AUTOMATION),-auto-approve,)
 
+export AWS_PROFILE := projects
+
+init:
+	terraform -chdir=$(TERRAFORM_DIR) init
+
 validate:
 	terraform -chdir=$(TERRAFORM_DIR) validate
 
 plan:
-	make validate
 	terraform -chdir=$(TERRAFORM_DIR) plan
 
 package:
@@ -16,11 +20,9 @@ package:
 	zip -j bin/redirect.zip src/redirect/handler.py src/shared/utils.py
 
 apply:
-	make validate
 	terraform -chdir=$(TERRAFORM_DIR) apply $(AUTO_APPROVE)
 
 destroy:
-	make validate
 	terraform -chdir=$(TERRAFORM_DIR) destroy $(AUTO_APPROVE)
 
 fmt:
