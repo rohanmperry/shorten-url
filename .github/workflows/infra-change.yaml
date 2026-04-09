@@ -40,7 +40,7 @@ jobs:
 
       - name: TF Init and Validate
         run: |
-            terraform -chdir=terraform init -backend=false
+            terraform -chdir=terraform init
             make validate
 
       - name: TF Init and Plan
