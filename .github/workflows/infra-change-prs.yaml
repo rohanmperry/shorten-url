@@ -14,8 +14,8 @@ env:
   TF_IN_AUTOMATION: true
 
 jobs:
-  infra-change:
-    name: Infra Change
+  run-change:
+    name: Run Change
     uses: ./.github/workflows/infra-change.yaml
     with:
       runs-on: ubuntu-latest
