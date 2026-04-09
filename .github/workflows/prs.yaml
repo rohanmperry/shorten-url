@@ -14,9 +14,9 @@ env:
   TF_IN_AUTOMATION: true
 
 jobs:
-  setup:
-    name: Setup
-    uses: ./.github/workflows/setup.yaml
+  setup-shared:
+    name: Setup Shared
+    uses: ./.github/workflows/setup-shared.yaml
     with:
       runs-on: ubuntu-latest
       aws-web-role-arn: 'arn:aws:iam::659212880322:role/github-actions'
