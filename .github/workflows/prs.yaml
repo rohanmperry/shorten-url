@@ -21,8 +21,8 @@ jobs:
       runs-on: ubuntu-latest
       aws-web-role-arn: 'arn:aws:iam::659212880322:role/github-actions'
 
-  init-validate:
-    name: Init-Validate
+  tf-init-validate:
+    name: TF Init and Validate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
