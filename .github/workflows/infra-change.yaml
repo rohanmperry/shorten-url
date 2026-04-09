@@ -10,9 +10,14 @@ on:
       aws-region:
         required: false
         type: string
+      tf-version:
+        required: false
+        type: string
 
 env:
   AWS_DEFAULT_REGION: ${{ inputs.aws-region || 'us-east-1' }}
+  TF_VERSION: ${{ inputs.tf-version || '1.7.5' }}
+  TF_IN_AUTOMATION: true
 
 jobs:
   run-change:
@@ -26,6 +31,12 @@ jobs:
         uses: hashicorp/setup-terraform@v4
         with:
           terraform_version: ${{ env.TF_VERSION }}
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ inputs.aws-web-role-arn }}
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
 
       - name: TF Init and Validate
         run: |
