@@ -43,5 +43,7 @@ jobs:
             terraform -chdir=terraform init -backend=false
             make validate
 
-      - name: TF Plan
-        run: make plan
+      - name: TF Init and Plan
+        run: |
+          make init
+          make plan
