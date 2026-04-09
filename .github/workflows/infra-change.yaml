@@ -15,10 +15,19 @@ env:
   AWS_DEFAULT_REGION: ${{ inputs.aws-region || 'us-east-1' }}
 
 jobs:
-  setup-common:
-    name: Setup Common
+  infra-change:
+    name: Infra Change
     runs-on: ${{ inputs.runs-on }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
-        
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
+      - name: Terraform Init and Validate
+        run: |
+            terraform -chdir=terraform init -backend=false
+            make validate

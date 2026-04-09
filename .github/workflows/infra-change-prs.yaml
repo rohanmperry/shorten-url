@@ -1,0 +1,22 @@
+name: Infra Change PRs
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  TF_VERSION: "1.7.5"
+  TF_IN_AUTOMATION: true
+
+jobs:
+  setup-shared:
+    name: Setup Shared
+    uses: ./.github/workflows/infra-change.yaml
+    with:
+      runs-on: ubuntu-latest
+      aws-web-role-arn: 'arn:aws:iam::659212880322:role/github-actions'
