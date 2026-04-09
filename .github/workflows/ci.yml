@@ -13,22 +13,30 @@ env:
   TF_IN_AUTOMATION: true
 
 jobs:
+  show-bash-settings:
+    name: Show Bash Settings
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show ENV 
+        run: env
+
+      - name: Show options
+        run: echo "$-"
+
+      -name: Show files
+       run: ls -lR
+
   init-validate:
     name: Init-Validate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout branch
+        uses: actions/checkout@v6
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v4
         with:
           terraform_version: ${{ env.TF_VERSION }}
-
-      - name: Show environment variables
-        run: env
-
-      - name: Show GitHub files
-        run: ls -lR
 
       - name: Terraform init and validate
         run: |
