@@ -27,7 +27,10 @@ jobs:
         with:
           terraform_version: ${{ env.TF_VERSION }}
 
-      - name: Terraform Init and Validate
+      - name: TF Init and Validate
         run: |
             terraform -chdir=terraform init -backend=false
             make validate
+
+       - name: TF Plan
+         run: make plan
