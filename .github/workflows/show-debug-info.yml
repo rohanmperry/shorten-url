@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Show CPU Info
-        run: cpuinfo
+        run: cat /proc/cpuinfo
 
       - name: Show Mem Info
-        run: meminfo
+        run: cat /proc/meminfo
