@@ -14,8 +14,8 @@ env:
   TF_IN_AUTOMATION: true
 
 jobs:
-  setup-shared:
-    name: Setup Shared
+  infra-change:
+    name: Infra Change
     uses: ./.github/workflows/infra-change.yaml
     with:
       runs-on: ubuntu-latest
