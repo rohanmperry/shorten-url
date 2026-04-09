@@ -13,19 +13,6 @@ env:
   TF_IN_AUTOMATION: true
 
 jobs:
-  show-bash-settings:
-    name: Show Bash Settings
-    runs-on: ubuntu-latest
-    steps:
-      - name: Show ENV
-        run: env
-
-      - name: Show options
-        run: echo "$-"
-
-      - name: Show files
-        run: ls -lR
-
   init-validate:
     name: Init-Validate
     runs-on: ubuntu-latest
