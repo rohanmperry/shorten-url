@@ -5,10 +5,10 @@ on:
         required: true
         type: string
       aws-web-role-arn:
-        required: false
+        required: true
         type: string
       aws-region:
-        required: true
+        required: false
         type: string
 
 env:
