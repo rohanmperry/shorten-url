@@ -16,12 +16,11 @@ env:
 jobs:
   setup:
     name: Setup
-    use: ./.github/workflows/setup.yaml
+    uses: ./.github/workflows/setup.yaml
     with:
       runs-on: ubuntu-latest
       aws-web-role-arn: 'arn:aws:iam::659212880322:role/github-actions'
 
-jobs:
   init-validate:
     name: Init-Validate
     runs-on: ubuntu-latest
