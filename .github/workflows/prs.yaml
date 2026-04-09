@@ -1,4 +1,4 @@
-name: Continous Integration
+name: prs
 
 on:
   workflow_dispatch:
