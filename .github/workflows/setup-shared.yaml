@@ -15,8 +15,8 @@ env:
   AWS_DEFAULT_REGION: ${{ inputs.aws-region || 'us-east-1' }}
 
 jobs:
-  setup:
-    name: Setup
+  setup-common:
+    name: Setup Common
     runs-on: ${{ inputs.runs-on }}
     steps:
       - name: Checkout Code
