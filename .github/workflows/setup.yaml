@@ -1,0 +1,21 @@
+on:
+  workflow-call:
+    inputs:
+      runs-on:
+        required: true
+        type: string
+      aws-web-role-arn:
+        required: flase
+        type: string
+      aws-region:
+        required: true
+        type: string
+
+env:
+  AWS_DEFAULT_REGION: ${{input.aws-region || 'us-east-1' }}
+
+jobs:
+  setup:
+    runs-on: ${{ input.runs-on }}
+    steps:
+     use: actions/checkout@v6

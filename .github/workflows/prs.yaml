@@ -1,4 +1,4 @@
-name: CI
+name: Continous Integration
 
 on:
   workflow_dispatch:
@@ -6,11 +6,20 @@ on:
     branches: [main]
 
 permissions:
+  id-token: write
   contents: read
 
 env:
   TF_VERSION: "1.7.5"
   TF_IN_AUTOMATION: true
+
+jobs:
+  setup:
+    name: Setup
+    use: ./.github/workflows/setup.yaml
+    with:
+      runs-on: ubuntu-latest
+      aws-web-role-arn: 'arn:aws:iam::659212880322:role/github-actions'
 
 jobs:
   init-validate:
