@@ -20,8 +20,24 @@ env:
   TF_IN_AUTOMATION: true
 
 jobs:
+  run-tests:
+    name: Run Tests
+    runs-on: ${{ inputs.runs-on }}
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v6
+	with:
+	  python-version: '3.11'
+
+      - name: Install dependencies
+        run: make install-dev
+
+      - name: Run Tests
+        run: make test
+
   run-change:
     name: Run Change
+    needs: run-tests
     runs-on: ${{ inputs.runs-on }}
     steps:
       - name: Configure AWS Credentials

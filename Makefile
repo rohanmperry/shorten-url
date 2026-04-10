@@ -1,6 +1,6 @@
 TERRAFORM_DIR := terraform
 
-.PHONY: init up down plan fmt lint test
+.PHONY: install-dev init validate plan package apply destroy fmt test
 
 AUTO_APPROVE := $(if $(TF_IN_AUTOMATION),-auto-approve,)
 
@@ -13,6 +13,8 @@ else
 $(info Running in CI, using ODIC AWS credentials)
 endif
 
+install-dev:
+	pip install -r requirements-dev.txt
 init:
 	terraform -chdir=$(TERRAFORM_DIR) init
 
