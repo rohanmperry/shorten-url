@@ -10,14 +10,21 @@ on:
       aws-region:
         required: false
         type: string
+        default: 'us-east-1'
       tf-version:
         required: false
         type: string
+        default: '1.14.8'
+      apply:
+        required: false
+        type: boolean
+        default: false
 
 env:
   AWS_DEFAULT_REGION: ${{ inputs.aws-region || 'us-east-1' }}
   TF_VERSION: ${{ inputs.tf-version || '1.14.8' }}
   TF_IN_AUTOMATION: true
+  TF_LOG: INFO
 
 jobs:
   run-change:
@@ -58,8 +65,11 @@ jobs:
           make validate
 
       - name: TF Plan
+        if: ${{ !input.apply }}
         run: make plan
         timeout-minutes: 2
-        # Set debug messages to INFO
-        # env:
-        #  TF_LOG: INFO
+
+      - name: TF Apply
+        if: ${{ input.apply }}
+        run: make apply
+        timeout-minutes: 5
