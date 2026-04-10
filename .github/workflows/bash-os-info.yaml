@@ -2,8 +2,6 @@ name: Show Bash and OS Info
 
 on:
   workflow_dispatch:
-  push:
-    branches: [jay/*]
 
 jobs:
   show-bash-settings:
