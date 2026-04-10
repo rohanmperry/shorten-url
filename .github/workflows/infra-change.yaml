@@ -24,6 +24,12 @@ jobs:
     name: Run Change
     runs-on: ${{ inputs.runs-on }}
     steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ inputs.aws-web-role-arn }}
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
+
       - name: Checkout Code
         uses: actions/checkout@v6
 
@@ -32,12 +38,9 @@ jobs:
         with:
           terraform_version: ${{ env.TF_VERSION }}
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ inputs.aws-web-role-arn }}
-          aws-region: ${{ env.AWS_DEFAULT_REGION }}
-
+      - name: Package Lambba
+        run: make package
+          
       - name: TF Init and Validate
         run: |
           make init 

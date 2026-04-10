@@ -23,8 +23,9 @@ plan:
 	terraform -chdir=$(TERRAFORM_DIR) plan
 
 package:
-	zip -j bin/create_short_url.zip src/create_short_url/handler.py src/shared/utils.py
-	zip -j bin/redirect.zip src/redirect/handler.py src/shared/utils.py
+	mkdir -p dist
+	zip -j dist/create_short_url.zip src/create_short_url/handler.py src/shared/utils.py
+	zip -j dist/redirect.zip src/redirect/handler.py src/shared/utils.py
 
 apply:
 	terraform -chdir=$(TERRAFORM_DIR) apply $(AUTO_APPROVE)
