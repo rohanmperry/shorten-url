@@ -43,11 +43,11 @@ variable "log_retention_days" {
 variable "create_short_url_zip_path" {
   description = "Path to the create_short_url Lambda zip"
   type        = string
-  default     = "../bin/create_short_url.zip"
+  default     = "../dist/create_short_url.zip"
 }
 
 variable "redirect_zip_path" {
   description = "Path to the redirect zip"
   type        = string
-  default     = "../bin/redirect.zip"
+  default     = "../dist/redirect.zip"
 }
