@@ -25,6 +25,7 @@ variable "environment" {
 variable "owner" {
   description = "Owner tag for all resources"
   type        = string
+  default     = "Jay"
 }
 
 variable "vpc_cidr" {
