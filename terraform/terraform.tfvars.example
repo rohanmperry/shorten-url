@@ -1,5 +1,4 @@
 aws_region                = "us-east-1"
-aws_profile               = "projects"
 project_name              = "shorten-url"
 environment               = "dev"
 owner                     = "your-name"
