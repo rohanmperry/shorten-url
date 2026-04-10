@@ -40,14 +40,15 @@ jobs:
 
       - name: Package Lambba
         run: make package
-          
+
       - name: TF Init and Validate
         run: |
-          make init 
+          make init
           make validate
 
       - name: TF Plan
         run: make plan
-        timeout-minutes: 4
-        env:
-          TF_LOG: INFO
+        timeout-minutes: 2
+        # Set debug messages to INFO
+        # env:
+        #  TF_LOG: INFO
