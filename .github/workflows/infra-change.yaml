@@ -24,7 +24,9 @@ env:
   AWS_DEFAULT_REGION: ${{ inputs.aws-region || 'us-east-1' }}
   TF_VERSION: ${{ inputs.tf-version || '1.14.8' }}
   TF_IN_AUTOMATION: true
-  TF_LOG: INFO
+  # Set TF Debug level accordingly: ERROR, WARN, INFO,DEBUG, TRACE or null ('')
+  #  to turn it off, oe comment the line below.
+  TF_LOG: ''
 
 jobs:
   run-change:
