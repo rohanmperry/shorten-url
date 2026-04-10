@@ -24,6 +24,9 @@ jobs:
     name: Run Tests
     runs-on: ${{ inputs.runs-on }}
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
@@ -45,9 +48,6 @@ jobs:
         with:
           role-to-assume: ${{ inputs.aws-web-role-arn }}
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
-
-      - name: Checkout Code
-        uses: actions/checkout@v6
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v4
