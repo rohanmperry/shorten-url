@@ -65,11 +65,11 @@ jobs:
           make validate
 
       - name: TF Plan
-        if: ${{ !input.apply }}
+        if: ${{ !inputs.apply }}
         run: make plan
         timeout-minutes: 2
 
       - name: TF Apply
-        if: ${{ input.apply }}
+        if: ${{ inputs.apply }}
         run: make apply
         timeout-minutes: 5
