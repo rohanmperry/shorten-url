@@ -4,12 +4,6 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "aws_profile" {
-  description = "AWS CLI profile to use"
-  type        = string
-  default     = "projects"
-}
-
 variable "project_name" {
   description = "Project name used for resource naming and tagging"
   type        = string
@@ -25,6 +19,7 @@ variable "environment" {
 variable "owner" {
   description = "Owner tag for all resources"
   type        = string
+  default     = "Jay"
 }
 
 variable "vpc_cidr" {
@@ -48,11 +43,11 @@ variable "log_retention_days" {
 variable "create_short_url_zip_path" {
   description = "Path to the create_short_url Lambda zip"
   type        = string
-  default     = "../bin/create_short_url.zip"
+  default     = "../dist/create_short_url.zip"
 }
 
 variable "redirect_zip_path" {
   description = "Path to the redirect zip"
   type        = string
-  default     = "../bin/redirect.zip"
+  default     = "../dist/redirect.zip"
 }
