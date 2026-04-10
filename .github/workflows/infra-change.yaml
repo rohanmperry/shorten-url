@@ -43,5 +43,8 @@ jobs:
           make init 
           make validate
 
-      - name: TF Init and Plan
+      - name: TF Plan
         run: make plan
+        timeout-minutes: 4
+        env:
+          TF_LOG: INFO
