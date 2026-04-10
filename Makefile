@@ -10,7 +10,7 @@ ifndef TF_IN_AUTOMATION
 export AWS_PROFILE := projects
 $(info Running locally, using AWS credentials from profile)
 else
-$(info Running in CI, using ODIC AWS credentials)
+$(info Running in CI, using OIDC AWS credentials)
 endif
 
 install-dev:
