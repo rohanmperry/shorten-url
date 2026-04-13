@@ -8,7 +8,7 @@ Serverless URL shortener built on AWS — API Gateway, Lambda, DynamoDB, inside 
 - make destroy - to destroy
 
 ## Usage
-```bash
+```
 # First get the AWS API Gateway end-point.
 #
 API_ENDPOINT=$(AWS_PROFILE=<your AWS local profile> terraform -chdir=terraform output -raw api_endpoint)
@@ -22,6 +22,7 @@ curl -X POST $API_ENDPOINT/shorten \
 # You can copy and paste the short URL into a browser.
 # The application will find the original URL and
 # send a redirect to that.
+```
 
 ## Requirements
 
