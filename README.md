@@ -2,7 +2,7 @@
 
 Serverless URL shortener built on AWS — API Gateway, Lambda, DynamoDB, inside a VPC.
 
-- 100% Terraform.
+- 100% Terraform
 - make plan - to check the plan
 - make appy - to deploy
 - make destroy - to destroy
