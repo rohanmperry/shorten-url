@@ -26,5 +26,5 @@ curl -X POST $API_ENDPOINT/shorten \
 ## Requirements
 
 - Terraform >= 1.14
-- AWS CLI configured with a named profile
+- AWS CLI configured with a named local profile
 - Python >= 3.11 (for Lambda and tests)
