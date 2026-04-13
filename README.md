@@ -9,9 +9,9 @@ Serverless URL shortener built on AWS — API Gateway, Lambda, DynamoDB, inside 
 - DynamoDB accessed via VPC Gateway Endpoint (no NAT cost)
 - API Gateway HTTP API as the public entry point
 - 100% Terraform.
-- make plan to check the plan
-- make appy to deploy
-- make destroy to destroy
+- make plan - to check the plan
+- make appy - to deploy
+- make destroy - to destroy
 
 ## Usage
 ```bash
