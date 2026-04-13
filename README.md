@@ -2,12 +2,6 @@
 
 Serverless URL shortener built on AWS — API Gateway, Lambda, DynamoDB, inside a VPC.
 
-## Architecture
-
-- VPC with public and private subnets across 2 AZs
-- Lambda functions running in private subnets
-- DynamoDB accessed via VPC Gateway Endpoint (no NAT cost)
-- API Gateway HTTP API as the public entry point
 - 100% Terraform.
 - make plan - to check the plan
 - make appy - to deploy
@@ -15,17 +9,14 @@ Serverless URL shortener built on AWS — API Gateway, Lambda, DynamoDB, inside 
 
 ## Usage
 ```bash
-# Deploy
-make up
+# First get the AWS API Gateway end-point.
+#
+API_ENDPOINT=$(AWS_PROFILE=<your AWS local profile> terraform -chdir=terraform output -raw api_endpoint)
 
 # Shorten a URL
 curl -X POST /shorten \
   -H "Content-Type: application/json" \
-  -d '{"url": "https://example.com/long/path"}'
-
-# Tear down
-make down
-```
+  -d '{"url": "https://example.com/<long URL>"}'
 
 ## Requirements
 
