@@ -1,3 +1,13 @@
+# *** THIS REPOSITORY IS NOW OBSOLETE ***
+
+Please visot:
+
+https://short.manamperi.com
+
+For the latest information
+
+---
+
 # shorten-url
 
 Serverless URL shortener built on AWS — API Gateway, Lambda, DynamoDB, inside a VPC.
