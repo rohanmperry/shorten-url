@@ -1,6 +1,6 @@
 # *** THIS REPOSITORY IS NOW OBSOLETE ***
 
-Please visot:
+Please visit:
 
 https://short.manamperi.com
 
